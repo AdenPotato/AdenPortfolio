@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+django_project/__pycache__/
 *.py[codz]
 *$py.class
 
@@ -151,7 +152,9 @@ activemq-data/
 .env
 .envrc
 .venv
+.djvenv/
 djvenv/
+djvenv/*
 env/
 venv/
 ENV/
