@@ -29,3 +29,11 @@ or added
 python3 manage.py migrate
 ```
 That does the actual migrations into the app
+
+# superuser
+
+create the super user with this command, asks for stuff that is needed for user
+
+```bash
+python3 manage.py createsuperuser
+```
