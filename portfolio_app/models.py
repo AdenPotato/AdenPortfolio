@@ -46,7 +46,6 @@ class Student(models.Model):
         on_delete=models.CASCADE,
         null=True, blank=True,
         related_name='student', 
-        
     )
 
     def __str__(self):
