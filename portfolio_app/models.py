@@ -27,6 +27,7 @@ class Project(models.Model):
     def get_absolute_url(self):
         return reverse('project-detail', args=[str(self.id)])
     
+
 class Student(models.Model):
 #List of choices for major value in database, human readable name
     MAJOR = (
@@ -47,7 +48,7 @@ class Student(models.Model):
         null=True, blank=True,
         related_name='student', 
     )
-
+    
     def __str__(self):
         return self.name
 
