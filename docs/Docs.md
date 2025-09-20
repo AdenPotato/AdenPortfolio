@@ -41,3 +41,4 @@ python3 manage.py createsuperuser
 
 # Patterns
 [This Link](https://iretha.github.io/design-patterns/cheat-sheet) helps show the design patterns and what they do
+
