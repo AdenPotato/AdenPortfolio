@@ -22,6 +22,7 @@ Migrations are simple as to migrate a model you can do it with runnign commands 
 ```python
 python3 manage.py makemigrations
 ```
+
 - that makes the actual migrations for the models, no matter if they are removed
 or added
 
@@ -37,3 +38,6 @@ create the super user with this command, asks for stuff that is needed for user
 ```bash
 python3 manage.py createsuperuser
 ```
+
+# Patterns
+[This Link](https://iretha.github.io/design-patterns/cheat-sheet) helps show the design patterns and what they do
