@@ -11,7 +11,6 @@ To register student model in admin panel you put this in admin.py
 from django.contrib import admin
 from portfolio_app.models import Student
 
-
 admin.site.register(Student)
 ```
 
@@ -33,7 +32,7 @@ That does the actual migrations into the app
 
 # superuser
 
-create the super user with this command, asks for stuff that is needed for user
+create the s    uper user with this command, asks for stuff that is needed for user
 
 ```bash
 python3 manage.py createsuperuser
