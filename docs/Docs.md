@@ -1,5 +1,9 @@
-# Admin
+# Personal Docs
+
+## Admin
+
 Admin doesn't work instantly. First create a super user in manage.py
+
 ```python
 python3 manage.py createsuperuser
 ```
@@ -7,6 +11,7 @@ python3 manage.py createsuperuser
 asks for username, email, and password. - now can login
 
 To register student model in admin panel you put this in admin.py
+
 ```python
 from django.contrib import admin
 from portfolio_app.models import Student
@@ -14,8 +19,9 @@ from portfolio_app.models import Student
 admin.site.register(Student)
 ```
 
-# migrations
-migrations from [Here](https://docs.djangoproject.com/en/5.2/topics/migrations/)
+## migrations
+
+migrations from [This Link](https://docs.djangoproject.com/en/5.2/topics/migrations/)
 Migrations are simple as to migrate a model you can do it with runnign commands from manage.py
 
 ```python
@@ -28,16 +34,17 @@ or added
 ```python
 python3 manage.py migrate
 ```
+
 That does the actual migrations into the app
 
-# superuser
+## superuser
 
-create the s    uper user with this command, asks for stuff that is needed for user
+create the super user with this command, asks for stuff that is needed for user
 
 ```bash
 python3 manage.py createsuperuser
 ```
 
-# Patterns
-[This Link](https://iretha.github.io/design-patterns/cheat-sheet) helps show the design patterns and what they do
+## Patterns
 
+[This Link](https://iretha.github.io/design-patterns/cheat-sheet) helps show the design patterns and what they do
