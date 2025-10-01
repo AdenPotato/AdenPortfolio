@@ -1,5 +1,9 @@
 # Personal Docs
 
+## Python Virtual Enviroment
+
+source djvenv/bin/activate
+
 ## Admin
 
 Admin doesn't work instantly. First create a super user in manage.py
