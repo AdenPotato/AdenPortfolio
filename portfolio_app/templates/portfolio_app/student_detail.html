@@ -1,0 +1,60 @@
+{% extends "portfolio_app/base_template.html" %}
+
+{% block title %}{{ student.name }}{% endblock %}
+
+{% block content %}
+<div class="py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="mb-0">{{ student.name }}</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="mb-3">Student Information</h5>
+              <p><strong>Name:</strong> {{ student.name }}</p>
+              <p><strong>Email:</strong> 
+                <a href="mailto:{{ student.email }}">{{ student.email }}</a>
+              </p>
+              <p><strong>Major:</strong> {{ student.get_major_display }}</p>
+            </div>
+            <div class="col-md-6">
+              <h5 class="mb-3">Portfolio Status</h5>
+              {% if student.portfolio %}
+                <div class="alert alert-success" role="alert">
+                  <h6 class="alert-heading">✓ Portfolio Available</h6>
+                  <p class="mb-2"><strong>Title:</strong> {{ student.portfolio.title }}</p>
+                  <p class="mb-0"><strong>Status:</strong> 
+                    {% if student.portfolio.is_active %}
+                      <span class="badge bg-success">Active</span>
+                    {% else %}
+                      <span class="badge bg-secondary">Inactive</span>
+                    {% endif %}
+                  </p>
+                </div>
+              {% else %}
+                <div class="alert alert-info" role="alert">
+                  <h6 class="alert-heading">No Portfolio</h6>
+                  <p class="mb-0">This student hasn't created a portfolio yet.</p>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          
+          <div class="mt-4 d-flex gap-2">
+            {% if student.portfolio %}
+              <a href="{% url 'portfolio-detail' student.portfolio.id %}" 
+                 class="btn btn-primary">View Portfolio</a>
+              <a href="{% url 'portfolio-update' student.portfolio.id %}" 
+                 class="btn btn-warning">Update Portfolio</a>
+            {% endif %}
+            <a href="{% url 'student-list' %}" class="btn btn-secondary">Back to Students</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

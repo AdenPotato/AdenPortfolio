@@ -1,0 +1,44 @@
+{% extends "portfolio_app/base_template.html" %}
+
+{% block title %}{% if is_create %}Create{% else %}Update{% endif %} Project{% endblock %}
+
+{% block content %}
+<div class="py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="mb-0">{% if is_create %}Create New{% else %}Update{% endif %} Project</h2>
+          <small class="text-white-50">For: {{ portfolio.title }}</small>
+        </div>
+        <div class="card-body">
+          <form method="post" novalidate>
+            {% csrf_token %}
+            
+            <div class="mb-3">
+              <label for="id_title" class="form-label">Project Title <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="id_title" name="title" 
+                     value="{% if project %}{{ project.title }}{% endif %}" 
+                     required placeholder="My Awesome Project">
+            </div>
+            
+            <div class="mb-3">
+              <label for="id_description" class="form-label">Description <span class="text-danger">*</span></label>
+              <textarea class="form-control" id="id_description" name="description" 
+                        rows="5" required placeholder="Describe your project...">{% if project %}{{ project.description }}{% endif %}</textarea>
+              <div class="form-text">Provide a detailed description of your project</div>
+            </div>
+            
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-primary">
+                {% if is_create %}Create Project{% else %}Save Changes{% endif %}
+              </button>
+              <a href="{% url 'portfolio-detail' portfolio.id %}" class="btn btn-secondary">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
