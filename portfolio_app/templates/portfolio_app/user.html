@@ -1,0 +1,32 @@
+{% extends 'portfolio_app/base_template.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h3>MSU Student Profile</h3>
+        </div>
+        <div class="card-body">
+            <p class="lead">Welcome, {{user}}</p>
+            <p><small class="text-muted">Portfolio ID: {{user.student.portfolio.id}}</small></p>
+            <p><strong>Portfolio:</strong> {{ user.student.portfolio.title }}</p>
+            <div class="mb-3">
+                <a class="btn btn-primary me-2" href="{{ user.student.portfolio.get_absolute_url }}" role="button">View</a>
+                <a class="btn btn-primary" href="{% url 'update_portfolio' user.student.portfolio.id %}" role="button">Update</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-header bg-secondary text-white">
+            <h3>Student Information</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input class="btn btn-primary" type="submit" name="Update" value="Update">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

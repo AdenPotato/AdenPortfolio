@@ -1,0 +1,37 @@
+{% extends 'portfolio_app/base_template.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Register | Portfolio Hub{% endblock %}
+
+{% block content %}
+<div class="py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">UCCS Student Portfolio Registration</h4>
+        </div>
+        <div class="card-body">
+          <p class="text-muted mb-4">Create your account to showcase your amazing work</p>
+
+          <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            <div class="d-grid gap-2 mt-4">
+              <button type="submit" class="btn btn-primary">Create User</button>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer bg-light">
+          <div class="text-center">
+            <small>
+              Already have an account? <a href="{% url 'login' %}" class="text-decoration-none">Login here</a>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

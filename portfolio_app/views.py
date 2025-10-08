@@ -3,6 +3,9 @@ from django.contrib import messages
 from portfolio_app.models import Portfolio, Student, Project
 from django.http import HttpResponse
 
+from .forms import CreateUserForm
+from django.contrib.auth.models import Group
+
 
 
 # Display home page with active portfolios
@@ -174,3 +177,25 @@ def student_detail(request, id):
         'student': student,
     }
     return render(request, 'portfolio_app/student_detail.html', context)
+
+
+def register_page(request):
+
+    form = CreateUserForm()
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            group = Group.objects.get(name='student')
+            user.groups.add(group)
+            student = Student.objects.create(user=user,)
+            portfolio = Portfolio.objects.create()
+            student.portfolio = portfolio
+            student.save()
+
+            messages.success(request, 'Account was created for ' + username)
+            return redirect('login')
+        
+    context ={'form':form}
+    return render(request, 'registration/register.html', context)            
